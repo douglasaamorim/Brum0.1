@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brum Estética Automotiva</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 360px;
+      background: white;
+      margin: auto;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      font-size: 14px;
+      text-align: center;
+      font-weight: normal;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 14px;
+      margin: 10px 0 5px;
+      display: block;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 8px;
+      background-color: #2e86de;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1b4f72;
+    }
+
+    .clear-btn {
+      background-color: #bbb;
+      margin-top: 10px;
+    }
+
+    .resultado {
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Brum Estética Automotiva</h1>
+    <h2>Precificação de PPF</h2>
+
+    <label for="dias">Dias:</label>
+    <input type="number" id="dias" step="any" placeholder="Ex: 3.5" />
+
+    <label for="metragem">Metragem:</label>
+    <input type="number" id="metragem" step="any" placeholder="Ex: 12.5" />
+
+    <button onclick="calcularPreco()">Calcular Preço de Venda</button>
+    <button class="clear-btn" onclick="zerarCampos()">Zerar Campos</button>
+
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    function calcularPreco() {
+      const dias = parseFloat(document.getElementById('dias').value);
+      const metragem = parseFloat(document.getElementById('metragem').value);
+
+      if (isNaN(dias) || isNaN(metragem)) {
+        document.getElementById('resultado').innerText = 'Preencha os dois campos corretamente.';
+        return;
+      }
+
+      const preco = (dias * 1560) + (metragem * 686.4);
+      document.getElementById('resultado').innerText = `Preço de Venda: R$ ${preco.toFixed(2).replace('.', ',')}`;
+    }
+
+    function zerarCampos() {
+      document.getElementById('dias').value = '';
+      document.getElementById('metragem').value = '';
+      document.getElementById('resultado').innerText = '';
+    }
+  </script>
+</body>
+</html>
